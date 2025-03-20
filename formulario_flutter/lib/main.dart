@@ -60,14 +60,27 @@ class _FormularioScreenState extends State<FormularioScreen> {
                   return null;
                 },
               ),
+              SizedBox(height: 10),
+              TextFormField(
+                controller: _direccionController,
+                decoration: InputDecoration(labelText: 'Dirección'),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Ingrese su Dirección';
+                  }
+                  return null;
+                },
+              ),
                 SizedBox(height: 10),
                 TextFormField(
-                controller: _direccionController,
-                decoration: InputDecoration(labelText: 'Dirreción'),
+                controller: _emailController,
+                decoration: InputDecoration(labelText: 'Correo Electrónico'),
                 keyboardType: TextInputType.emailAddress,
                 validator: (value) {
-                 if (value == null || value.isEmpty) {
-                    return 'Ingrese su Dirreción';
+                  if (value == null || value.isEmpty) {
+                    return 'Ingrese su correo';
+                  } else if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
+                    return 'Ingrese un correo válido';
                   }
                   return null;
                 },
